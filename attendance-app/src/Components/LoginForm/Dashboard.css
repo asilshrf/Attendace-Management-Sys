@@ -1,0 +1,280 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.dashboard {
+  display: grid;
+  grid-template-areas:
+    "logout-btn logout-btn logout-btn"
+    "timesheet-panel center-stack timer-panel";
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 12px;
+}
+.timesheet-panel, .timer-panel {
+  background-color: #f9fafb;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+.timesheet-panel {
+  grid-area: timesheet-panel;
+  overflow: hidden;
+}
+.timesheet-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+.timesheet-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+.timesheet-item:last-child {
+  border-bottom: none;
+}
+.timesheet-date {
+  font-weight: 500;
+  color: #333;
+}
+.timesheet-duration {
+  font-weight: 600;
+  color: #16a34a; 
+}
+.timesheet-duration.incomplete {
+  color: #dc2626; 
+  font-weight: bold;
+}
+.timesheet-empty {
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+  padding: 20px;
+}
+.center-stack {
+  grid-area: center-stack;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.welcome-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin: 0;
+}
+.punch-btn {
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 250px;
+}
+.punch-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+}
+.punch-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
+}
+.calendar {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  padding: 15px;
+}
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #333;
+}
+.calendar-header button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.calendar-header button:hover {
+  color: #2563eb;
+}
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.calendar-table th {
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+.calendar-table td {
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  cursor: pointer;
+}
+.calendar-table td:not(.empty):hover {
+  background-color: #e5f0ff;
+}
+.cell.today {
+  background-color: #d1e0ff;
+  border-color: #2563eb;
+  font-weight: bold;
+}
+.cell.selected {
+  background-color: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+.cell.empty {
+  background-color: #f9fafb;
+  border: 1px solid #050505;
+  color: #d1d5db;
+  cursor: default !important;
+}
+.cell.incomplete {
+  background-color: #be0000;
+  border: 1px solid #ffffff;
+  color: #fafafa;
+  font-weight: bold;
+}
+.cell.absent {
+  background-color: #fef2f2;
+  border-color: #f87171;
+  color: #ef4444;
+  font-weight: bold;
+}
+.timer-panel {
+  grid-area: timer-panel;
+}
+.timer-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  text-align: center;
+  margin: 0 0 20px;
+}
+.timer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.timer-label {
+  font-weight: 500;
+  color: #6b7280;
+}
+.timer-value {
+  font-weight: 600;
+  color: #333;
+}
+.timer-big {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+.reset-btn {
+  background-color: #ef4444;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 20px;
+  width: 100%;
+}
+.reset-btn:hover {
+  background-color: #dc2626;
+}
+.logout-btn {
+  grid-area: logout-btn;
+  justify-self: end;
+  background: #dc2626;
+  border: 2px solid #dc2626;
+  padding: 8px 20px;
+  color: #efebeb;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s, 
+  border-color 0.2s;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+.logout-btn:hover {
+  color: #111827;
+  border-color: #111827;
+  text-decoration: underline;
+}
+.message-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 350px;
+  z-index: 1000;
+  border: 2px solid #ef4444;
+}
+.message-box h4 {
+  margin-top: 0;
+  color: #ef4444;
+  font-size: 1.5rem;
+}
+.message-box p {
+  margin: 15px 0;
+  color: #333;
+}
+.message-box button {
+  background-color: #ef4444;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
